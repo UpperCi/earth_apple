@@ -162,7 +162,7 @@ function draw_space()
             1, 28
         }
         
-        for i = 1, #(star_coords), 2 do
+        for i = 1, #star_coords, 2 do
             draw_star(x, y, 4, star_coords[i] / 8, star_coords[i + 1] / 8)
         end
 
@@ -207,9 +207,9 @@ function _draw()
         draw_pickups()
 
         if game_state == 3 then
-            print("⬅️/➡️ to move", 12, 24, 6)
-            print("⬆️/z to (double) jump", 12, 32, 6)
-            print("⬇️/x to grab/drop", 12, 40, 6)
+            print("⬅️➡️/ad to move", 12, 24, 6)
+            print("⬆️/z/n to (double) jump", 12, 32, 6)
+            print("⬇️/x/m to grab/drop", 12, 40, 6)
         end
 
         player:draw()
@@ -255,5 +255,7 @@ function _draw()
         else
             print("enemies are faster", 29, 112, 7)
         end
+    elseif game_state == 4 then
+        print(tick / 30, 4, 4, 1)
     end
 end

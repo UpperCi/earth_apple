@@ -111,7 +111,7 @@ function init_pickups()
 
     function pebble:drop()
         if self.held then
-            self.y += 0.6
+            self.y += 0.3
             self.dy = -0.4 + player.dy / 3
             self.dx = 0.85
             if player.fliph then

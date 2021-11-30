@@ -44,7 +44,7 @@ function make_beetle(x, y)
 
         move_dir = 0.06 + speedmod * 0.02
         if self.left then move_dir *= -1 end
-        if self.charging then move_dir *= 3 end
+        if self.charging then move_dir *= 3 + speedmod end
 
         -- check for wall
         check_x = self.x + 1 + move_dir + sgn(move_dir)

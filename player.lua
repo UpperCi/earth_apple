@@ -86,11 +86,11 @@ function player:update_speed()
 
 	local _dx = self.dx
 
-	if btn(➡️) then
+	if btn(➡️) or btn(⬇️, 1) then
 		_dx += 0.15
 		self.fliph = false
 
-	elseif btn(⬅️) then
+	elseif btn(⬅️) or btn(❎, 1) then
 		_dx-= 0.15
 		self.fliph=true
 		
