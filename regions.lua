@@ -396,6 +396,11 @@ function switch_region(data, dir_x, dir_y)
 		check_point_rgn = 12
 		player:heal()
 		-- make_worm(108, 55, 6)
+	elseif data.region == 10 then
+        if not new_music then
+            music(16)
+            new_music = true
+        end
 	end
 	update_cam()
 end

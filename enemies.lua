@@ -296,6 +296,7 @@ function make_spring(x, y)
             player.dy = -1.2
             player.doublejump = true
             self.animTimer = 12
+            sfx(25, 3)
         end
 
         if self.animTimer > 0 then

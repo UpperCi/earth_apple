@@ -61,6 +61,7 @@ function update_apple(finish)
             boss_state = 2
             init_path()
             local w = make_worm(99, 59, 12, 3)
+            music(36)
             w.respawn = true
             w.inv_timer = 60
             player.dy = -0.9
@@ -125,6 +126,7 @@ function _update()
         
         if btnp(🅾️) then
             game_state = 0
+            music(0)
             if difficulty == 2 then speedmod = 1 
             elseif difficulty == 0 then player.hp = 0 end
             switch_region({region = 3, dx = 0, dy = 0}, 0, 0)
@@ -158,8 +160,7 @@ function draw_space()
             18, 15,
             6, 23,
             28, 21,
-            15, 28,
-            1, 28
+            15, 28
         }
         
         for i = 1, #star_coords, 2 do
@@ -218,7 +219,6 @@ function _draw()
         draw_text()
 
         draw_tt()
-        draw_debug()
     elseif game_state == 1 then
         pal(0, 128, 1)
         rectfill(0, 0, 128, 128, 0)        
@@ -256,6 +256,23 @@ function _draw()
             print("enemies are faster", 29, 112, 7)
         end
     elseif game_state == 4 then
-        print(tick / 30, 4, 4, 1)
+        pal()
+        cls()
+        rectfill(23, 31, 105, 73, 13)
+        rectfill(24, 32, 104, 72, 1)
+        print("time:", 28, 36, 6)
+        print(tick / 30, 50, 36, 7)
+        
+        print("difficulty:", 28, 48, 6)
+        local diff_str = "normal"
+
+        if difficulty == 0 then
+            diff_str = "easy"
+        elseif difficulty == 2 then
+            diff_str = "hard"
+        end
+        print(diff_str, 74, 48, 7)
+        
+        print("congratulations!", 32, 64, 7)
     end
 end

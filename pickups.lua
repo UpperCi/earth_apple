@@ -1,4 +1,5 @@
 pickups = {}
+new_music = false
 
 function make_pickup(_spr)
     local p = make_actor(-1, -1)
@@ -67,9 +68,11 @@ function init_pickups()
         local ydiff = (ey + eh) - (self.y + self.h)
 
         if abs(xdiff) < ew + 0.2 + self.w and abs(ydiff) < eh + 0.2 + self.h then
-            e:damage()
+            sfx(21, 3)
+            if not (e.inv_timer > 0) then
+                e:damage()
+            end
         end
-
     end
 
     function pebble:update()

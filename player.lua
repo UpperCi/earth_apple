@@ -38,10 +38,15 @@ function player:damage()
 		self.x = check_point_x
 		self.y = check_point_y
 		switch_region({region = check_point_rgn, dx = 0, dy = 0}, 0, 0)
+		if boss_state > 0 then
+			music(16)
+		end
 		self:heal()
 	end
 
 	self.inv_timer = 45
+
+	sfx(24, 3)
 
 	return true
 end
@@ -50,6 +55,7 @@ function player:heal()
 	if difficulty > 0 then
 		self.hp = 5
 		make_splash_particle(self.x * 8, self.y * 8, 20, 3, 11)
+		sfx(26, 3)
 	end
 end
 
@@ -82,8 +88,6 @@ function player:update_input()
 end
 
 function player:update_speed()
-	-- amogus was here
-
 	local _dx = self.dx
 
 	if btn(➡️) or btn(⬇️, 1) then
@@ -149,11 +153,13 @@ function player:update_jump()
 		_dy=-0.475
 		self.coy=0
 		self.jumptime = 6
+		sfx(22, 3)
 	elseif validdouble then
 		_dy = -0.5
 		self.dx /= 1.5
 		self.doublejump = false
 		self.jumptime = 4
+		sfx(23, 3)
 	elseif validhold then
 		_dy-=self.hold
 	end

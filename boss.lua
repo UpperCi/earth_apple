@@ -76,6 +76,7 @@ function make_worm(wx, wy, n, hp)
             elseif #(worms) > 0 then
                 worms[1].main_target = player
             else
+                music(16)
                 boss_state = 3
             end
         end
